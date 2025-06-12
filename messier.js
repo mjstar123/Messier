@@ -57,6 +57,14 @@ menum.name="number";
 menum.placeholder = "1에서 30까지 숫자를 입력해주세요";
 section1.appendChild(menum);
 
+menum.addEventListener("keyup",(event) => {
+    if(event.key === 'Enter') {
+        const keyValue = menum.value;
+        const number = document.querySelectorAll('#messier-asides aside')[keyValue - 1];
+        number.classList.add('on');
+    }
+});
+
 const btn = document.createElement("button");
 btn.textContent = "입력";
 section1.appendChild(btn);
