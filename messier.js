@@ -1,23 +1,46 @@
-const items = document.querySelectorAll("article");
-const aside = document.querySelector("aside");
-const close = aside.querySelector("span");
- 
-for(let el of items){     
-    el.addEventListener("click", e=>{       
-        let tit = e.currentTarget.querySelector("h2").innerText;
-        let txt = e.currentTarget.querySelector("p").innerText;
-        let pic = e.currentTarget.querySelector("img").getAttribute("src")
-        let alt1 = e.currentTarget.querySelector("img").getAttribute("alt")
-        
-        aside.querySelector("h1").innerText = tit;
-        aside.querySelector("p").innerText = txt;
-        aside.querySelector("figure img").setAttribute("src",pic);
-        aside.querySelector("figure img").setAttribute("alt",alt1);
-        aside.classList.add("on");
-    });
- 
-    close.addEventListener("click", ()=>{
-        aside.classList.remove("on");
-    });
-}        
+const section = document.getElementById('messier-section');
+const asides = document.getElementById('messier-asides');
 
+for (let i = 1; i <= 30; i++) {
+    const num = i.toString().padStart(2, '0');
+
+    
+    const article = document.createElement('article');
+    article.innerHTML = `
+        <div class="inner">
+            <div class="txt">
+                <h2>${num}</h2>
+                <p>메시에 목록 ${i}번입니다.</p><br>
+                <p class="click">(클릭)</p>
+            </div> 
+            <figure>
+                <img src="pic/M${i}.jpg" alt="M${i}사진 안보임">
+            </figure>
+        </div>
+    `;
+    section.appendChild(article);
+
+    
+    const aside = document.createElement('aside');
+    aside.classList.add('messier-aside');
+
+    aside.innerHTML = `
+        <div class="txt">
+            <h1>${num}</h1>
+            <p>메시에 목록 ${i}번 설명입니다.</p>
+            <span class="close">CLOSE</span>  
+        </div>
+        <figure>
+            <img src="pic/M${i}.jpg" alt="M${i}사진 안보임">
+        </figure>
+    `;
+    asides.appendChild(aside);
+
+    article.addEventListener('click', () => {
+        aside.classList.add('on');
+    });
+
+    aside.querySelector('.close').addEventListener('click', () => {
+        aside.classList.remove('on');
+    });
+}
