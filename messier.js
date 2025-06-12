@@ -54,7 +54,7 @@ const information = [
 
 const menum = document.createElement("input");
 menum.name="number";
-menum.placeholder = "1에서 30까지 숫자를 입력해주세요";
+menum.placeholder = "1에서 30까지 숫자를 입력하세요.";
 section1.appendChild(menum);
 
 menum.addEventListener("keyup",(event) => {
@@ -62,6 +62,7 @@ menum.addEventListener("keyup",(event) => {
         const keyValue = menum.value;
         const number = document.querySelectorAll('#messier-asides aside')[keyValue - 1];
         number.classList.add('on');
+        menum.value = "";
     }
 });
 
@@ -72,6 +73,7 @@ btn.addEventListener('click', () => {
     const btnvalue = menum.value;
     const number = document.querySelectorAll('#messier-asides aside')[btnvalue - 1];
     number.classList.add('on');
+    menum.value = "";
 })
 
 for (let i = 1; i <= 30; i++) {
@@ -84,7 +86,7 @@ for (let i = 1; i <= 30; i++) {
             <div class="txt">
                 <h2>${num}</h2>
                 <p>메시에 목록 ${i}번입니다.</p><br>
-                <p class="click">(클릭)</p>
+                <span class="click">(클릭)</span>
             </div> 
             <figure>
                 <img src="pic/M${i}.jpg" alt="M${i}사진 안보임">
