@@ -1,4 +1,5 @@
-const section = document.getElementById('messier-section');
+const section1 = document.getElementById('num');
+const section2 = document.getElementById('messier-section');
 const asides = document.getElementById('messier-asides');
 
 const messierNames = [
@@ -51,6 +52,20 @@ const information = [
     "염소자리에 있는 구상성단이다."
 ];
 
+const menum = document.createElement("input");
+menum.name="number";
+menum.placeholder = "1에서 30까지 숫자를 입력해주세요";
+section1.appendChild(menum);
+
+const btn = document.createElement("button");
+btn.textContent = "입력";
+section1.appendChild(btn);
+btn.addEventListener('click', () => {
+    const btnvalue = menum.value;
+    const number = document.querySelectorAll('#messier-asides aside')[btnvalue - 1];
+    number.classList.add('on');
+})
+
 for (let i = 1; i <= 30; i++) {
     const num = i.toString().padStart(2, '0');
 
@@ -68,10 +83,9 @@ for (let i = 1; i <= 30; i++) {
             </figure>
         </div>
     `;
-    section.appendChild(article);
+    section2.appendChild(article);
 
-    const aside = document.createElement('aside');
-    aside.classList.add('messier-aside');
+    let aside = document.createElement('aside');
 
     aside.innerHTML = `
         <div class="txt">
