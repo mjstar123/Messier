@@ -79,7 +79,6 @@ btn.addEventListener('click', () => {
 for (let i = 1; i <= 30; i++) {
     const num = i.toString().padStart(2, '0');
 
-    
     const article = document.createElement('article');
     article.innerHTML = `
         <div class="inner">
